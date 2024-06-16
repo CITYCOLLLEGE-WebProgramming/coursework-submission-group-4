@@ -1,0 +1,56 @@
+.logoPrev {
+    background-color: rgb(86, 110, 206);
+    text-align: center;
+    color: white;
+
+    box-sizing: border-box;
+    
+    margin-top: auto;
+    margin-bottom: auto;
+
+    display: block;
+
+    padding: 20px;
+
+}
+
+.logoPrev > a > img {
+
+    height: 80px;
+}
+
+.logoPrev > p {
+    
+    font-size: 30px;
+}
+
+.cookieMain {
+
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 30px;
+}
+
+.cookieMain > * {
+
+    padding-top: 20px;
+}
+
+.cookieMain > ul {
+
+    padding-left: 20px;
+}
+
+.cookiePager { 
+
+    padding: 20px;
+
+    margin-top: 20px;
+    
+    font-size: 15px;
+    color: white;
+    
+    background-color: gray;
+
+    text-align: center;
+}

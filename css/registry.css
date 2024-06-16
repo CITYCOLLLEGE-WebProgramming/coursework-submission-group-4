@@ -1,0 +1,158 @@
+body {
+    background-image: url("/background/Cloudy.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    text-align: center;
+}
+
+#mainlogo {
+    padding: 20px;
+    height: 80px;
+
+}
+
+.main {
+    padding: 30px;
+}
+
+.form {
+    padding: 21px;
+
+    display: inline-block;
+    
+    border-radius: 12px;
+    background-color: white;
+
+    text-align: center;
+
+    height: 500px;
+    width: 400px;
+}
+
+h1 {
+    margin-bottom: 13px;
+
+    color: rgb(67, 65, 65);
+
+    font-size: 40px;
+}
+
+.form_username {
+
+    padding-top: 20px;
+}
+
+.form_email {
+
+    padding-top: 10px;
+}
+
+.form_password_reset { 
+
+    padding-top: 20px;
+}
+
+
+.form_password {
+
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.form > a {
+    
+    font-size: 13px;
+}
+
+input {
+
+    color: rgba(0, 0, 0, 0.623);
+        
+    padding: 5px;
+
+    height: 30px;
+    width: 300px;
+
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+
+/* PRIMARY BUTTON CSS */
+.login_button {
+    
+    display: block;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    height: 50px;
+    width: 200px;
+    
+    border-radius: 5px;
+
+    background-color: rgb(86, 110, 206);
+
+    color: white;
+}
+
+.login_button:hover {
+
+    background-color: rgb(55, 55, 139);
+}
+
+
+.horizontal_sep {
+    
+    padding: 0px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    height: 1px;
+    width: 280px;
+
+    background-color: rgb(105, 102, 102);
+}
+/* REMEMBER ME CHECKBOX */
+
+/* RESPONSE MESSAGES & ERRORS */
+#error_process_login {
+
+    padding-top: 10px;
+
+    font-size: 14px;
+
+    display: none;
+
+    color: red;
+}
+
+#reset_response {
+
+    font-size: 14px;
+
+    display: none;
+
+    color: green;
+}
+
+/*--------------------------------- PAGER  */
+
+.pager { 
+
+    font-size: 15px;
+    color: white;
+    
+}
+
+.pager a {
+
+    color: white;
+}

@@ -1,0 +1,127 @@
+/* ----------------------------- Content CSS ----------------------------- */
+.cart_content_main {
+
+    padding: 10px;
+    display: flex;
+}
+
+.cart_content_main > * {
+    margin: 5px;
+}
+
+aside {
+
+    padding: 10px;
+
+    width: 30%;
+    
+    border-radius: 10px;
+
+    background-color: rgb(255, 255, 255);
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(190, 180, 180);
+}
+
+article {
+
+    padding: 10px;
+    width: 70%;
+
+    border-radius: 10px;
+
+    background-color: rgb(255, 255, 255);
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(190, 180, 180);
+}
+
+#bag_title {
+
+    display: inline-block;
+}
+
+.top {
+
+    background-color: rgb(255, 255, 255);
+}
+
+#important_notif {
+
+    float: right;
+}
+
+.cart_seperator {
+
+    margin-top: 5px;
+
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(190, 180, 180);
+}
+
+/* ITEMS CSS */
+.item {
+
+
+    display: flex;
+
+    margin-top: 5px;
+
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(149, 144, 144, 0.64);
+}
+
+#productFrame {
+
+    margin: 5px;
+
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(210, 206, 206, 0.467);
+
+    float: left;
+    height: 200px;
+}
+
+.itemDescription {
+
+    margin-top: auto;
+    margin-bottom: auto;
+    /* BACKGROUND TO SEE WHERE BORDERS AND MARGINS ARE OUTSIDE OF INSPECT*/
+    background-color: white;
+
+    font-size: 20px;
+
+    justify-content: space-between;
+}
+
+.itemDescription > div {
+
+    display: inline-block;
+    padding-right: 200px;
+    padding-left: 50px;
+}
+
+p {
+
+    display: inline;
+}
+
+#removeButton {
+
+    margin: auto auto auto auto;
+    
+    height: 25px;
+
+    cursor: pointer;
+
+    margin-right: 50px;
+}
+

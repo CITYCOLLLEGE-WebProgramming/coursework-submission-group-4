@@ -1,0 +1,9 @@
+.button {
+    background-color:rgb(255, 255, 255);
+    color:white;
+    border: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    
+}

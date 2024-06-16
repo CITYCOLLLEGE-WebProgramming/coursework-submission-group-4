@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Item</title>
+</head>
+<body>
+  <h2>Upload Item</h2>
+  <form action="http://localhost:3000/items" method="POST" enctype="multipart/form-data">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description"></textarea><br><br>
+
+    <label for="price">Price:</label><br>
+    <input type="number" id="price" name="price" required><br><br>
+
+    <label for="owner">Owner:</label><br>
+    <input type="text" id="owner" name="owner" required><br><br>
+
+    <label for="condition">Condition:</label>
+    <select id="condition" name="condition" required>
+      <option value="new">New</option>
+      <option value="lightly used">Lightly Used</option>
+      <option value="used">Used</option>
+      <option value="damaged">Damaged</option>
+    </select><br><br>
+
+    <label for="">Category:</label>
+    <select id="" name="category" required>
+      <option value="technology">Technology</option>
+      <option value="hobby">Hobby</option>
+      <option value="home_garden">Home & Garden</option>
+      <option value="health_beauty">Health & Beauty</option>
+      <option value="prof_b2b">Professional - B2B</option>
+      <option value="books">Books</option>
+      <option value="fashion">Fashion</option>
+      <option value="babies_newborns">Babies & Newborns</option>
+      <option value="automotive">Automotive</option>
+    </select><br><br>
+
+    <label for="photo">Photo:</label><br>
+    <input type="file" id="photo" name="photo" accept="image/*"><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
