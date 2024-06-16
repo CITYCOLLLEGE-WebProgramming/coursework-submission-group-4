@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TradeIt - Item Details</title>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/x-icon" href="t_logo_holder2.ico">
+    <link href="/css/defaultStyle.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .item-details {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .item-details img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .item-details h2 {
+            margin: 10px 0;
+        }
+        .item-details p {
+            margin: 5px 0;
+        }
+        .item-details .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <header>
+        <a href="main.html">
+            <img id="logo" src="/icons/TradeItLogo.png" alt="mainLogo">
+        </a>
+        <img id="seperator" src="whiteSquare.png" alt="seperator">
+        <div class="motto">
+            Sell & Buy your <br>favourite Items
+        </div>
+        <div class="searchBar">
+            <input type="text" placeholder="Search on TradeIt...">
+            <button type="submit" title="Submit">
+                <span id="search" class="material-symbols-outlined">
+                    search
+                </span>
+            </button>
+        </div>
+        <button id="locationChange">
+            <div class="location">
+                <a href="public/addListingForm.html">Create a listing</a>
+            </div>
+        </button>
+        <img id="seperator" src="whiteSquare.png" alt="seperator">
+        <form action="registry.html">
+            <button class="profileButton" title="Profile">
+                <div id="profileTab">
+                    <div>
+                        Log In / Register
+                    </div>
+                    <span id="account_circle" class="material-symbols-outlined">
+                    </span>
+                </div>
+            </button>
+        </form>
+        <img id="seperator" src="whiteSquare.png" alt="seperator">
+        <div id="google_translate_element"></div>
+                    <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                    }
+                    </script> <!--credits for this automatic translation part from w3schools https://www.w3schools.com/howto/howto_google_translate.asp -->
+
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <div class="shoppingCart">
+            <a href="cart.html">
+                <i class="fi fi-rr-shopping-bag"></i>
+            </a>
+        </div>
+    </header>
+    
+        <div id="items-list"></div>
+    
+</header>
+
+<div class="content_main">
+    <div class="item-details" id="item-details">
+        <!-- Item details will be dynamically inserted here -->
+    </div>
+
+    <div class="back-link">
+        <a href="javascript:history.back()">Back to Items List</a>
+    </div>
+</div>
+
+<footer>
+    <a href="contact.html" class="button">Contact Us</a>
+    <p>Quick tip! Our staff members will never ask for your passwords / log in info. Be aware of scams.<button type="button" onclick="alert('just a warning!')"></button></p>
+    <a href="cookies.html"class="button">Cookies Policy & Info</a>
+</footer>
+
+<script>
+    window.onload = async function() {
+        try {
+            // Extract item ID from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const itemId = urlParams.get('id');
+            if (!itemId) throw new Error('Item ID is missing from URL');
+
+            // Fetch item details from backend
+            const response = await fetch(`http://localhost:3000/items/${itemId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch item details');
+            }
+            const item = await response.json();
+
+            // Display item details
+            const itemDetailsContainer = document.getElementById('item-details');
+            itemDetailsContainer.innerHTML = `
+                <img src="http://localhost:3000/uploads/${item.photo}" alt="${item.name}">
+                <h2>${item.name}</h2>
+                <p>Description: ${item.description}</p>
+                <p>Price: ${item.price}€</p>
+                <p>Owner: ${item.owner}</p>
+                <p>Created At: ${new Date(item.createdAt).toLocaleString()}</p>
+            `;
+
+        } catch (error) {
+            console.error('Error fetching item details:', error);
+            const itemDetailsContainer = document.getElementById('item-details');
+            itemDetailsContainer.innerHTML = '<p>Error fetching item details. Please try again later.</p>';
+        }
+    };
+</script>
+
+</body>
+</html>

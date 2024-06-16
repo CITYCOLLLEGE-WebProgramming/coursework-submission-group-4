@@ -1,0 +1,13 @@
+<form action="http://localhost:3000/users" method="POST" enctype="multipart/form-data"> 
+    <input type="text" name="name" placeholder="Username" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="text" name="address" placeholder="Address">
+    <input type="text" name="city" placeholder="City">
+    <select name="interested" required>
+        <option value="technology">Technology</option>
+        <!-- Add other options -->
+    </select>
+    <input type="file" name="photo" accept="image/*">
+    <button type="submit">Register</button>
+</form>

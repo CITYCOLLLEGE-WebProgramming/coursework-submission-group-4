@@ -1,0 +1,309 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>TradeIt</title>
+
+    <meta charset="utf-8"/>
+
+    <link rel="icon" type="image/x-icon" href="t_logo_holder2.ico">
+
+    <link href="/css/defaultStyle.css" rel="stylesheet" type="text/css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+        }
+        #items-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .item img {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px 5px 0 0;
+            object-fit: cover;
+        }
+        .item h2 {
+            margin: 10px 0;
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .item p {
+            margin: 5px 0;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .item a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+    </style>
+</head>
+<body>
+<header>
+    <!-- <a href="template_actual.html"> -->
+        <img id="logo" src="/icons/TradeItLogo.png" alt="mainLogo">
+    </a>
+    <img id="seperator" src="whiteSquare.png" alt="seperator">
+    <div class="motto">
+        Sell & Buy your <br>favourite Items
+    </div>
+    <div class="searchBar">
+        <input type="text" id="searchInput" placeholder="Search on TradeIt...">
+        <button type="submit" title="Submit" id="searchButton">
+            <span id="search" class="material-symbols-outlined">
+                search
+            </span>
+        </button>
+    </div>
+    <button id="locationChange">
+        <div class="location">
+            <a href="public/addListingForm.html">Create a listing</a>
+        </div>
+    </button>
+    <img id="seperator" src="whiteSquare.png" alt="seperator">
+    <form action="registry.html">
+        <button class="profileButton" title="Profile">
+            <div id="profileTab">
+                <div>
+                    Log In / Register
+                </div>
+                <span id="account_circle" class="material-symbols-outlined">
+                    account_circle
+                </span>
+            </div>
+        </button>
+    </form>
+    <img id="seperator" src="whiteSquare.png" alt="seperator">
+    <div id="google_translate_element"></div>
+                    <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                    }
+                    </script> <!--credits for this automatic translation part from w3schools https://www.w3schools.com/howto/howto_google_translate.asp -->
+
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="shoppingCart">
+        <a href="cart.html">
+            <i class="fi fi-rr-shopping-bag"></i>
+        </a>
+    </div>
+</header>
+
+<div class="content_main">
+    <aside class="filters">
+        <fieldset>
+            <legend>Categories:</legend>
+            <div>
+                <label for="technology">Technology</label>
+                <input type="checkbox" id="technology" name="category" value="technology">
+            </div>
+            <div>
+                <label for="hobby">Hobby</label>
+                <input type="checkbox" id="hobby" name="category" value="hobby">
+            </div>
+            <div>
+                <label for="home_garden">Home & Garden</label>
+                <input type="checkbox" id="home_garden" name="category" value="home_garden">
+            </div>
+            <div>
+                <label for="health_beauty">Health & Beauty</label>
+                <input type="checkbox" id="health_beauty" name="category" value="health_beauty">
+            </div>
+            <div>
+                <label for="prof_b2b">Professional & Business</label>
+                <input type="checkbox" id="prof_b2b" name="category" value="prof_b2b">
+            </div>
+            <div>
+                <label for="books">Books</label>
+                <input type="checkbox" id="books" name="category" value="books">
+            </div>
+            <div>
+                <label for="fashion">Fashion</label>
+                <input type="checkbox" id="fashion" name="category" value="fashion">
+            </div>
+            <div>
+                <label for="babies_newborns">Babies & Newborns</label>
+                <input type="checkbox" id="babies_newborns" name="category" value="babies_newborns">
+            </div>
+            <div>
+                <label for="automotive">Automotive</label>
+                <input type="checkbox" id="automotive" name="category" value="automotive">
+            </div>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Filter by Price:</legend>
+            <div>
+                <label for="minPrice">Min Price:</label>
+                <input type="number" id="minPrice" name="minPrice" placeholder="Min Price">
+            </div>
+            <div>
+                <label for="maxPrice">Max Price:</label>
+                <input type="number" id="maxPrice" name="maxPrice" placeholder="Max Price">
+            </div>
+        </fieldset>
+    </aside>
+
+    <div id="items-list">
+        <!-- Items will be dynamically inserted here -->
+    </div>
+    <script>
+        let items = []; // Store items globally
+    
+        window.onload = async function() {
+            try {
+                // Fetch items from the backend
+                const response = await fetch('http://localhost:3000/items');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                items = await response.json();
+                displayItems(items);
+            } catch (error) {
+                console.error('Error fetching items:', error);
+                const itemsList = document.getElementById('items-list');
+                itemsList.innerHTML = '<p>Error fetching the requested items.</p>';
+            }
+        };
+    
+        //Display all items(list)
+        function displayItems(itemsToDisplay) {
+            const itemsList = document.getElementById('items-list');
+            itemsList.innerHTML = ''; //Clear the previous ones
+    
+            const selectedCategories = getSelectedCategories();
+            const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+            const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    
+            itemsToDisplay.forEach(item => {
+                //Check if items match filters
+                const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(item.category);
+                const matchesPrice = item.price >= minPrice && item.price <= maxPrice;
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery);
+    
+                if (matchesCategory && matchesPrice && matchesSearch) {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('item');
+    
+                    const itemLink = document.createElement('a');
+                    itemLink.href = `item.html?id=${item._id}`; //Link to item detail page edit
+    
+                    const itemImage = document.createElement('img');
+                    itemImage.src = `http://localhost:3000/uploads/${item.photo}`;
+                    itemImage.alt = item.name;
+                    itemLink.appendChild(itemImage);
+    
+                    const itemContent = document.createElement('div');
+                    itemContent.classList.add('item-content');
+    
+                    const itemName = document.createElement('h2');
+                    itemName.textContent = item.name;
+                    itemContent.appendChild(itemName);
+    
+                    const itemPrice = document.createElement('p');
+                    itemPrice.textContent = `Price: ${item.price}€`;
+                    itemContent.appendChild(itemPrice);
+    
+                    const itemOwner = document.createElement('p');
+                    itemOwner.textContent = `Owner: ${item.owner}`;
+                    itemContent.appendChild(itemOwner);
+    
+                    itemLink.appendChild(itemContent);
+                    itemDiv.appendChild(itemLink);
+                    itemsList.appendChild(itemDiv);
+                }
+            });
+        }
+    
+        //CATEGORIES | get inputs from checkboxes
+        function getSelectedCategories() {
+            const checkboxes = document.querySelectorAll('input[name=category]:checked');
+            const selectedCategories = Array.from(checkboxes).map(checkbox => checkbox.value);
+            return selectedCategories;
+        }
+    
+        //CATEGORIES | event listeners for checkboxes
+        const categoryCheckboxes = document.querySelectorAll('input[name=category]');
+        categoryCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                displayItems(items); // Re-display items based on selected categories
+            });
+        });
+
+        //FILTER BY PRICE | event listeners for price inputs
+        document.getElementById('minPrice').addEventListener('input', function() {
+            displayItems(items); // Re-display items based on price range
+        });
+        document.getElementById('maxPrice').addEventListener('input', function() {
+            displayItems(items); // Re-display items based on price range
+        });
+
+        //SEARCH | event listener for search button
+        document.getElementById('searchButton').addEventListener('click', function() {
+            displayItems(items); // Re-display items based on search query
+        });
+
+        //SEARCH | event listener for text input
+        document.getElementById('searchInput').addEventListener('input', function() {
+            displayItems(items); //redisplay the items based on query
+        });
+    </script>
+</div>
+
+<footer>
+    <!-- TRY TURNING ALL LINKS LIKE FAQ, COOKIES ,POLICY TO A LIST (LI, UL etc)--> <!--resolved-->
+<ul> 
+    <li> 
+        <a href="contact.html" class="button">Contact Us</a> 
+    </li>
+        <p>Quick tip! Our staff members will never ask for your passwords / log in info. Be aware of scams.   
+        </p>
+    <li>
+        <a href="cookies.html"class="button">Cookies Policy & Info</a> 
+    </li>
+    <li> 
+        <a href="privacypolicy.html"> Privacy Policy & Info </a>  
+    </li> 
+    <li> 
+        <a class="custom-font" href="survey.html"> Take part in our customer satisfaction survey! 
+        </a> 
+    </li> 
+    <li>  
+        <a href="faq.html">FAQ</a> 
+    </li>
+</ul>
+
+<br>
+<p>© TradeIt A.E. 2024</p>
+</footer>
+
+</body>
+<script src="/index.js"></script> 
+</html>
