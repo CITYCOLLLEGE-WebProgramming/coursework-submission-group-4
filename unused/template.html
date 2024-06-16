@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TradeIt</title>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/x-icon" href="t_logo_holder2.ico">
+    <link href="/css/defaultStyle.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+        }
+        #logo {
+            width: 120px;
+            height: auto;
+        }
+        .motto {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .searchBar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .searchBar input[type=text] {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .searchBar button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .searchBar button:hover {
+            background-color: #0056b3;
+        }
+        .location {
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+        .filters {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .filters legend {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .filters label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .filters input[type=checkbox] {
+            margin-right: 10px;
+        }
+        footer {
+            background-color: #cecbcb;
+            padding: 10px;
+            text-align: center;
+            color: rgb(0, 110, 255);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="template_actual.html">
+        <img id="logo" src="/icons/TradeItLogo.png" alt="mainLogo">
+    </a>
+    <div class="motto">
+        Sell & Buy your <br>favourite Items
+    </div>
+    <div class="searchBar">
+        <input type="text" placeholder="Search on TradeIt...">
+        <button type="submit" title="Submit">
+            <span id="search" class="material-symbols-outlined">
+                search
+            </span>
+        </button>
+    </div>
+    <button id="locationChange">
+        <div class="location">
+            Your current Location
+        </div>
+    </button>
+</header>
+
+<div class="content_main">
+    <aside class="filters">
+        <fieldset>
+            <legend>Filter by Category:</legend>
+            <div>
+                <input type="checkbox" id="technology" name="category" value="technology">
+                <label for="technology">Technology</label>
+            </div>
+            <div>
+                <input type="checkbox" id="hobby" name="category" value="hobby">
+                <label for="hobby">Hobby</label>
+            </div>
+            <div>
+                <input type="checkbox" id="home_garden" name="category" value="home_garden">
+                <label for="home_garden">Home & Garden</label>
+            </div>
+            <div>
+                <input type="checkbox" id="health_beauty" name="category" value="health_beauty">
+                <label for="health_beauty">Health & Beauty</label>
+            </div>
+            <div>
+                <input type="checkbox" id="prof_b2b" name="category" value="prof_b2b">
+                <label for="prof_b2b">Professional & Business</label>
+            </div>
+            <div>
+                <input type="checkbox" id="books" name="category" value="books">
+                <label for="books">Books</label>
+            </div>
+            <div>
+                <input type="checkbox" id="fashion" name="category" value="fashion">
+                <label for="fashion">Fashion</label>
+            </div>
+            <div>
+                <input type="checkbox" id="babies_newborns" name="category" value="babies_newborns">
+                <label for="babies_newborns">Babies & Newborns</label>
+            </div>
+            <div>
+                <input type="checkbox" id="automotive" name="category" value="automotive">
+                <label for="automotive">Automotive</label>
+            </div>
+        </fieldset>
+    </aside>
+
+    <div id="items-list">
+        <!-- Items will be dynamically inserted here -->
+    </div>
+    <script>
+        let items = []; // Store items globally
+    
+        window.onload = async function() {
+            try {
+                // Fetch items from backend
+                const response = await fetch('http://localhost:3000/items');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                items = await response.json();
+                displayItems(items);
+            } catch (error) {
+                console.error('Error fetching items:', error);
+                const itemsList = document.getElementById('items-list');
+                itemsList.innerHTML = '<p>Error fetching items. Please try again later.</p>';
+            }
+        };
+    
+        // Function to display items on the page
+        function displayItems(itemsToDisplay) {
+            const itemsList = document.getElementById('items-list');
+            itemsList.innerHTML = ''; // Clear previous items
+    
+            const selectedCategories = getSelectedCategories();
+    
+            itemsToDisplay.forEach(item => {
+                // Check if item's category is included in selected categories
+                if (selectedCategories.length === 0 || selectedCategories.includes(item.category)) {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('item');
+    
+                    const itemLink = document.createElement('a');
+                    itemLink.href = `item.html?id=${item._id}`; // Link to single item page
+    
+                    const itemImage = document.createElement('img');
+                    itemImage.src = `http://localhost:3000/uploads/${item.photo}`;
+                    itemImage.alt = item.name;
+                    itemLink.appendChild(itemImage);
+    
+                    const itemContent = document.createElement('div');
+                    itemContent.classList.add('item-content');
+    
+                    const itemName = document.createElement('h2');
+                    itemName.textContent = item.name;
+                    itemContent.appendChild(itemName);
+    
+                    const itemPrice = document.createElement('p');
+                    itemPrice.textContent = `Price: ${item.price}€`;
+                    itemContent.appendChild(itemPrice);
+    
+                    const itemOwner = document.createElement('p');
+                    itemOwner.textContent = `Owner: ${item.owner}`;
+                    itemContent.appendChild(itemOwner);
+    
+                    itemLink.appendChild(itemContent);
+                    itemDiv.appendChild(itemLink);
+                    itemsList.appendChild(itemDiv);
+                }
+            });
+        }
+    
+        // Function to get selected categories from checkboxes
+        function getSelectedCategories() {
+            const checkboxes = document.querySelectorAll('input[name=category]:checked');
+            const selectedCategories = Array.from(checkboxes).map(checkbox => checkbox.value);
+            return selectedCategories;
+        }
+    
+        // Event listeners for category filter change
+        const categoryCheckboxes = document.querySelectorAll('input[name=category]');
+        categoryCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                displayItems(items); // Re-display items based on selected categories
+            });
+        });
+    </script>
+</div>
+
+<footer>
+    <a href="contact.html" class="button">Contact Us</a>
+    <p>Quick tip! Our staff members will never ask for your passwords / log in info. Be aware of scams.<button type="button" onclick="alert('just a warning!')"></button></p>
+    <a href="cookies.html"class="button">Cookies Policy & Info</button>
+</footer>
+</body>
+<script src="/index.js"></script> 
+</html>
