@@ -1,2 +1,2 @@
 # MarketSite
-# Please note that chatgpt was used throughout the project primarily for troubleshooting and debugging purposes, but also as a source for general research and suggestions.
+- Apologies for two submissions, I thought the first one carried the folders and I noticed it a bit late.
